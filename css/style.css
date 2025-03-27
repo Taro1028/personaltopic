@@ -1,0 +1,210 @@
+@import url(reast.css);
+
+body{
+    width: 1200px;
+    margin: 0 auto;
+    font-family: Arial;
+    background-color: black;
+}
+
+/* ---------- HEAD ---------- */
+#main-sel{
+    display: flex;
+    height: 100px;
+    background-color: black;
+}
+
+#main-sel a img{
+    width: 76px;
+    height: 76px;
+    margin-top: 12px;
+    margin-left: 12px;
+}
+
+#main-sel h3{
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 100px;
+    margin-left: 10px;
+    color: #00D93A;
+}
+
+#main-sel ul{
+    margin-left: auto;
+    
+}
+
+#main-sel li{
+    float: left;
+}
+
+#main-sel li a{
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 100px;
+    margin-right: 10px;
+    color: #00D93A;
+}
+
+/* ---------- HOME ---------- */
+.home{
+    background-image: url(../img/Homebgi.png);
+    width: 1200px;
+    height: 920px;
+    overflow: hidden;
+    position: relative;
+}
+
+.home h1{
+    color: #00D93A;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 96px;
+    margin: 364px auto;
+}
+
+.home img{
+    position: absolute;
+}
+
+.home img:hover{
+    transform: scale(1.2);
+}
+
+.pic1{
+    width: 150px;
+    height: 150px;
+    top: 150px;
+    left: 100px;
+}
+
+.pic2{
+    width: 140px;
+    height: 140px;
+    top: 240px;
+    right: 120px;
+}
+
+.pic3{
+    width: 140px;
+    height: 140px;
+    bottom: 280px;
+    left: 160px;
+}
+
+.pic4{
+    width: 150px;
+    height: 150px;
+    bottom: 200px;
+    right: 60px;
+}
+
+.main{
+    display: flex;
+    color: white;
+    height: 920px;
+}
+
+.main img{
+    width: 500px;
+    height: 300px;
+    margin-top: 310px;
+}
+
+.main h2{
+    text-align: center;
+    font-size: 80px;
+    width: 600px;
+    margin: 380px auto;   
+}
+
+p{
+    color: white;
+    font-size: 24px;
+}
+
+.card{
+display: flex;    
+}
+
+.card img{
+    width: 600px;
+    height: 240px;
+}
+
+.card1{
+    /* top: 0;
+    left: 0; */
+}
+
+.card2{
+    /* bottom: 0;
+    right: 0; */
+}
+
+.bottom{
+    color: white;
+}
+/* ---------- Blockchain ---------- */
+
+
+/* ---------- Coin Details ---------- */
+
+
+/* ---------- Price History ---------- */
+
+
+/* ---------- Crypto Converter ---------- */
+
+
+/* ---------- Getting Started ---------- */
+
+
+/* ---------- FOOTER ---------- */
+.footer{
+    background-color: black;
+    height: 100px;
+    display: flex;
+}
+
+.footer img{
+    width: 80px;
+    height: 80px;
+}
+
+.left{
+    display: flex;
+}
+
+.left ul{
+    display: flex;
+    align-items: center;
+}
+
+.left li {
+    margin-left: 20px;
+}
+
+.left h3{
+    color: #00D93A;
+    font-weight: bolder;
+    font-size: 36px;
+    line-height: 100px;
+    margin: 0 169px;
+}
+
+.right{
+    display: flex;
+    margin-left: auto;
+}
+
+.right ul{
+    display: flex;
+    align-items: center;
+}
+
+.right li{
+    margin-right: 20px;
+}
