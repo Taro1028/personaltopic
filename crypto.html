@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="icon" href="img/LOGO.png">
     <title>Crypto Rookie</title>
 </head>
+
 <body>
     <!------------ HEAD ------------>
     <nav id="main-sel">
@@ -23,107 +25,141 @@
     </nav>
 
     <!-------------- Crypto Converter -------------->
-
-    <p id="timestamp"></p>
-
-    <div class="outer-left">
-        <div class="container">
-            <h4>匯率轉換</h4>
-            <div class="converter">
-                <div class="input-group">
-                    <input type="number" id="amountTWD" placeholder="輸入金額">
-                    <span>TWD</span>
+    <div class="outer">
+        <div class="outer-left">
+            <div class="container">
+                <h4>匯率轉換</h4>
+                <div class="converter">
+                    <div class="input-group">
+                        <input type="number" id="amountTWD" placeholder="輸入金額">
+                        <span>TWD</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" id="amountUSD" placeholder="轉換結果" readonly>
+                        <span>USD</span>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <input type="number" id="amountUSD" placeholder="轉換結果" readonly>
-                    <span>USD</span>
+                <p class="timestamp"></p>
+            </div>
+        </div>
+
+        <div class="outer-right">
+            <div class="container">
+                <h4>幣率轉換</h4>
+                <div class="converter">
+                    <div class="input-group">
+                        <input type="number" id="amountUSDT" placeholder="輸入金額">
+                        <span>USD</span>
+                    </div>
+                    <div class="input-group">
+                        <div class="changeselect">
+                            <input type="number" id="amountBTC" placeholder="轉換結果" readonly>
+                            <!-- <label for="currencySelect">選擇轉換幣種：</label> -->
+                            <select id="currencySelect">
+                                <option disabled selected value="">幣種</option>
+                                <option value="BTC">BTC</option>
+                                <option value="ETH">ETH</option>
+                                <option value="SOL">SOL</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
+                <p class="timestamp"></p>
             </div>
         </div>
     </div>
 
-    <div class="outer-right">
-        <div class="container">
-            <h4>幣率轉換</h4>
-            <div class="converter">
-                <div class="input-group">
-                    <input type="number" id="amountUSDT" placeholder="輸入金額">
-                    <span>USD</span>
-                </div>
-                <div class="input-group">
-                    <input type="number" id="amountBTC" placeholder="轉換結果" readonly>
-                    <span>BTC</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-------------- JS -------------->
+    <script>
+        window.addEventListener('load', () => {
+            const amountTWD = document.getElementById("amountTWD");
+            const amountUSD = document.getElementById("amountUSD");
 
-     <!-------------- JS -------------->
-        <script>
-            window.addEventListener('load', () => {
-                const amountTWD = document.getElementById("amountTWD");
-                const amountUSD = document.getElementById("amountUSD");
-    
-                // 固定匯率 1 TWD = 0.031 USD
+            // 固定匯率 1 TWD = 0.031 USD
             const exchangeRate = 0.031;
-    
-                // 台幣換美金
+
+            // 台幣換美金
             function convertCurrency() {
                 const amount = amountTWD.value;
-    
+
                 if (amount === "" || isNaN(amount) || amount <= 0) {
                     amountUSD.value = "";
                     return;
                 }
-    
+
                 // 計算結果四捨五入到小數點後兩位
                 amountUSD.value = (amount * exchangeRate).toFixed(2);
-            }
                 // 監聽輸入變更
+                let now = new Date()
+
+                let hour = ('0' + now.getHours()).slice(-2)
+                let minute = ('0' + now.getMinutes()).slice(-2)
+
+                document.getElementsByClassName('timestamp')[0].innerHTML = `
+                        ${now.toLocaleDateString()} ${hour}:${minute}
+                        `
+            }
             amountTWD.addEventListener("input", convertCurrency);
-    
-        
-                setInterval(() => {
-                    let now = new Date()
-    
-                    let hour = ('0' + now.getHours()).slice(-2)
-                    let minute = ('0' + now.getMinutes()).slice(-2)
-    
-                    document.querySelector('p').innerHTML = `
-                    ${now.toLocaleDateString()} ${hour}:${minute}
-                    `
-                }, 1000)
-            })
+        })
 
-            
-        </script>
 
-        <script>
-            window.addEventListener('load', () => {
-                const amountUSDT = document.getElementById("amountUSDT");
-                const amountBTC = document.getElementById("amountBTC");
+    </script>
 
-                // 固定匯率 1 USD = 0.000012 BTC
-            const exchangeRate = 0.000012;
-            
+    <script>
+        window.addEventListener('load', () => {
+            const amountUSDT = document.getElementById("amountUSDT");
+            const currencySelect = document.getElementById("currencySelect");
+            const amountBTC = document.getElementById("amountBTC");
 
-                // 美金換BTC
+            const exchangeRates = {
+                BTC: 0.000012,   // 1 USDT = 0.000012 BTC
+                ETH: 0.00035,    // 1 USDT = 0.00035 ETH
+                SOL: 0.025       // 1 USDT = 0.025 SOL
+            };
+
+            if (!currencySelect.value) {
+                amountUSDT.disabled = true
+            }
+
             function convertCurrency() {
-                const amount = amountUSDT.value;
+                if (currencySelect.value) {
+                    amountUSDT.disabled = false
+                }
+                const amount = parseFloat(amountUSDT.value);
+                const selectedCurrency = currencySelect.value; // 取得選擇的幣種
 
-                if (amount === "" || isNaN(amount) || amount <= 0) {
+                if (isNaN(amount) || amount <= 0) {
                     amountBTC.value = "";
                     return;
                 }
 
-                // 計算四捨五入到小數點後兩位
-                amountBTC.value = (amount * exchangeRate).toFixed(2);
-            }
-                // 監聽輸入變更
-            amountUSDT.addEventListener("input", convertCurrency);
+                // 依照選擇的幣種轉換，並設定適當的小數位數
+                let result;
+                if (selectedCurrency === "BTC") {
+                    result = (amount * exchangeRates.BTC).toFixed(8);
+                } else if (selectedCurrency === "ETH") {
+                    result = (amount * exchangeRates.ETH).toFixed(6);
+                } else if (selectedCurrency === "SOL") {
+                    result = (amount * exchangeRates.SOL).toFixed(4);
+                }
+                let now = new Date()
 
-            })
-        </script>
+                let hour = ('0' + now.getHours()).slice(-2)
+                let minute = ('0' + now.getMinutes()).slice(-2)
+
+                document.getElementsByClassName('timestamp')[1].innerHTML = `
+                        ${now.toLocaleDateString()} ${hour}:${minute}
+                        `
+
+                // 顯示轉換結果
+                amountBTC.value = result;
+            }
+
+            // 監聽 USDT 金額輸入與幣種選擇變更
+            amountUSDT.addEventListener("input", convertCurrency);
+            currencySelect.addEventListener("change", convertCurrency);
+        });
+    </script>
 
     <!------------ FOOTER ------------>
     <div class="footer">
@@ -143,6 +179,7 @@
             </ul>
         </div>
     </div>
-    
+
 </body>
+
 </html>

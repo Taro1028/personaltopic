@@ -323,13 +323,20 @@ td{
 }
 
 /* ---------- Price History ---------- */
-
+.tradingview-widget-container{
+    margin: 100px auto;
+}
 
 /* ---------- Crypto Converter ---------- */
+.outer{
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    margin-top: 280px;
+}
+
 .outer-left{
-    float: left;
     height: 600px;
-    margin: 20px 80px 200px;
 }
 
 .container{
@@ -342,13 +349,11 @@ td{
     font-size: 28px;
 }
 
-#timestamp{
-    width: 360px;
+.timestamp{
     height: 40px;
-    color: white;
+    color: black;
     text-align: center;
-    font-size: 36px;
-    margin: 300px auto 0;
+    font-size: 24px;
 }
 
 .input-group{
@@ -356,6 +361,10 @@ td{
     justify-content: center;
     align-items: center;
     margin: 20px 0;
+}
+
+.changeselect{
+    margin-left: 16px;
 }
 
 .input-group input{
@@ -370,9 +379,15 @@ td{
 }
 
 .outer-right{
-    float: right;
     height: 600px;
-    margin: 20px 80px 200px;
+}
+
+#currencySelect{
+    width: 60px;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    background-color: unset;
 }
 
 /* ---------- Getting Started ---------- */
