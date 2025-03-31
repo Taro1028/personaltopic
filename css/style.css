@@ -23,7 +23,7 @@ body{
 
 #main-sel h3{
     font-weight: bold;
-    font-size: 32px;
+    font-size: 36px;
     line-height: 100px;
     margin-left: 10px;
     color: #00D93A;
@@ -48,6 +48,10 @@ body{
     color: #00D93A;
 }
 
+#main-sel li a:hover{
+    background-color: #00D93A;
+    color: white;
+}
 /* ---------- HOME ---------- */
 .home{
     background-image: url(../img/Homebgi.png);
@@ -63,6 +67,7 @@ body{
     font-weight: bolder;
     font-size: 96px;
     margin: 364px auto;
+    letter-spacing: 1px;
 }
 
 .home img{
@@ -110,56 +115,283 @@ body{
 .main img{
     width: 500px;
     height: 300px;
-    margin-top: 310px;
+    margin-top: 360px;
 }
 
 .main h2{
     text-align: center;
     font-size: 80px;
     width: 600px;
-    margin: 380px auto;   
+    margin: 420px auto; 
+    letter-spacing: 1px;  
 }
 
-p{
+.in p{
     color: white;
-    font-size: 24px;
+    width: 1000px;
+    font-size: 28px;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 200px auto;
+    /* border: 20px dotted #00D93A; */
 }
 
 .card{
-display: flex;    
+    display: flex;
+    width: 1200px;
+    height: 800px;
+    padding-top: 200px; 
+    position: relative;   
 }
 
 .card img{
     width: 600px;
-    height: 240px;
+    height: 200px;
+    position: absolute;
 }
 
 .card1{
-    /* top: 0;
-    left: 0; */
+    top: 220px;
+    left: 140px;
 }
 
 .card2{
-    /* bottom: 0;
-    right: 0; */
+    bottom: 200px;
+    right: 140px;
+}
+
+.card img:hover{
+    transform: scale(1.2);
 }
 
 .bottom{
     color: white;
 }
-/* ---------- Blockchain ---------- */
 
+.bottom h3{
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 200px;
+    letter-spacing: 2px;
+}
+
+.bottom p{
+    color: white;
+    width: 1000px;
+    font-size: 28px;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 200px auto;
+}
+
+/* ---------- Blockchain ---------- */
+.top{
+    background-image: url(../img/bgi.png);
+    width: 1200px;
+    height: 920px;
+    color: white;
+    font-size: 80px;
+    display: flex;
+    position: relative; 
+}
+
+.top-left{
+    position: absolute;
+    bottom: 120px;
+    left: 100px;
+    letter-spacing: 1px;
+}
+
+.top-right{
+    position: absolute;
+    bottom: 120px;
+    right: 30px;
+    letter-spacing: 1px;
+}
+
+.text p{
+    color: white;
+    width: 1000px;
+    font-size: 28px;
+    line-height: 2;
+    letter-spacing: 2px;
+    text-align: center;
+    margin: 400px auto;
+}
+
+img{
+    width: 1200px;
+    height: 600px;
+}
+
+.chain ul{
+    color: white;
+    width: 1000px;
+    list-style: none;
+    padding: 0;
+    margin: 400px auto;
+} 
+
+.chain li{
+    display: flex;
+    align-items: flex-start; 
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.chain li i{
+    font-size: 24px;
+    line-height: 1.8;
+    color: white;
+}
+
+.chain li p{
+    font-size: 28px;
+    line-height: 1.6;
+}
 
 /* ---------- Coin Details ---------- */
+table{
+    width: 800px;
+    height: 260px;
+    margin: 200px auto;
+    font-size: 24px;
+}
 
+.list-title{
+    background-color: #00D93A;
+    font-weight: bolder;
+}
+
+tr{
+    background-color: white;
+}
+
+td{
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+}
+
+.coin{
+    color: white;
+    margin: 400px 170px;
+}
+
+.coin img{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.coin-1{
+    display: flex;
+    width: 860px;
+    height: 280px;
+    margin-bottom: 360px;
+}
+
+.coin-2{
+    display: flex;
+    width: 860px;
+    height: 280px;
+    margin-bottom: 360px;
+}
+
+.coin-3{
+    display: flex;
+    width: 860px;
+    height: 280px;
+}
+
+.coin-left{
+    margin-right: 50px;
+}
+
+.coin-left h4{
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.coin-right{
+    font-size: 28px;
+    align-content: center;
+}
 
 /* ---------- Price History ---------- */
 
 
 /* ---------- Crypto Converter ---------- */
+.outer-left{
+    float: left;
+    height: 600px;
+    margin: 20px 80px 200px;
+}
 
+.container{
+    text-align: center;
+    background-color: #00D93A;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    color: black;
+    font-size: 28px;
+}
+
+#timestamp{
+    width: 360px;
+    height: 40px;
+    color: white;
+    text-align: center;
+    font-size: 36px;
+    margin: 300px auto 0;
+}
+
+.input-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.input-group input{
+    width: 280px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.input-group span{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.outer-right{
+    float: right;
+    height: 600px;
+    margin: 20px 80px 200px;
+}
 
 /* ---------- Getting Started ---------- */
+
+
+.process h3{
+    color: white;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bolder;
+    margin-bottom: 60px;
+}
+
+.process img{
+    display: block;
+    width: 480px;
+    height: 800px;
+    margin: 0 auto;
+}
 
 
 /* ---------- FOOTER ---------- */
@@ -167,11 +399,12 @@ display: flex;
     background-color: black;
     height: 100px;
     display: flex;
+    clear: both;
 }
 
 .footer img{
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
 }
 
 .left{
@@ -183,8 +416,13 @@ display: flex;
     align-items: center;
 }
 
-.left li {
+.left li{
     margin-left: 20px;
+}
+
+.left i{
+    font-size: 60px;
+    color: white;
 }
 
 .left h3{
@@ -192,7 +430,7 @@ display: flex;
     font-weight: bolder;
     font-size: 36px;
     line-height: 100px;
-    margin: 0 169px;
+    margin: 0 232px;
 }
 
 .right{
@@ -207,4 +445,8 @@ display: flex;
 
 .right li{
     margin-right: 20px;
+}
+
+.left i{
+    font-size: 60px;
 }

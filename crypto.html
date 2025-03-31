@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/LOGO.png">
+    <title>Crypto Rookie</title>
+</head>
+<body>
+    <!------------ HEAD ------------>
+    <nav id="main-sel">
+        <a href="index.html"><img src="img/LOGO.png" alt=""></a>
+        <h3>Crypto Rookie</h3>
+        <ul>
+            <li><a href="block.html">Blockchain</a></li>
+            <li><a href="coin.html">Coin Details</a></li>
+            <li><a href="price.html">Price History</a></li>
+            <li><a href="crypto.html">Crypto Converter</a></li>
+            <li><a href="getting.html">Getting Started</a></li>
+        </ul>
+    </nav>
+
+    <!-------------- Crypto Converter -------------->
+
+    <p id="timestamp"></p>
+
+    <div class="outer-left">
+        <div class="container">
+            <h4>匯率轉換</h4>
+            <div class="converter">
+                <div class="input-group">
+                    <input type="number" id="amountTWD" placeholder="輸入金額">
+                    <span>TWD</span>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="amountUSD" placeholder="轉換結果" readonly>
+                    <span>USD</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="outer-right">
+        <div class="container">
+            <h4>幣率轉換</h4>
+            <div class="converter">
+                <div class="input-group">
+                    <input type="number" id="amountUSDT" placeholder="輸入金額">
+                    <span>USD</span>
+                </div>
+                <div class="input-group">
+                    <input type="number" id="amountBTC" placeholder="轉換結果" readonly>
+                    <span>BTC</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-------------- JS -------------->
+        <script>
+            window.addEventListener('load', () => {
+                const amountTWD = document.getElementById("amountTWD");
+                const amountUSD = document.getElementById("amountUSD");
+    
+                // 固定匯率 1 TWD = 0.031 USD
+            const exchangeRate = 0.031;
+    
+                // 台幣換美金
+            function convertCurrency() {
+                const amount = amountTWD.value;
+    
+                if (amount === "" || isNaN(amount) || amount <= 0) {
+                    amountUSD.value = "";
+                    return;
+                }
+    
+                // 計算結果四捨五入到小數點後兩位
+                amountUSD.value = (amount * exchangeRate).toFixed(2);
+            }
+                // 監聽輸入變更
+            amountTWD.addEventListener("input", convertCurrency);
+    
+        
+                setInterval(() => {
+                    let now = new Date()
+    
+                    let hour = ('0' + now.getHours()).slice(-2)
+                    let minute = ('0' + now.getMinutes()).slice(-2)
+    
+                    document.querySelector('p').innerHTML = `
+                    ${now.toLocaleDateString()} ${hour}:${minute}
+                    `
+                }, 1000)
+            })
+
+            
+        </script>
+
+        <script>
+            window.addEventListener('load', () => {
+                const amountUSDT = document.getElementById("amountUSDT");
+                const amountBTC = document.getElementById("amountBTC");
+
+                // 固定匯率 1 USD = 0.000012 BTC
+            const exchangeRate = 0.000012;
+            
+
+                // 美金換BTC
+            function convertCurrency() {
+                const amount = amountUSDT.value;
+
+                if (amount === "" || isNaN(amount) || amount <= 0) {
+                    amountBTC.value = "";
+                    return;
+                }
+
+                // 計算四捨五入到小數點後兩位
+                amountBTC.value = (amount * exchangeRate).toFixed(2);
+            }
+                // 監聽輸入變更
+            amountUSDT.addEventListener("input", convertCurrency);
+
+            })
+        </script>
+
+    <!------------ FOOTER ------------>
+    <div class="footer">
+        <div class="left">
+            <ul>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-discord"></i></a></li>
+            </ul>
+            <h3>Crypto Rookie</h3>
+        </div>
+        <div class="right">
+            <ul>
+                <li><a href="https://www.binance.com/zh-TC"><img src="img/Binance.png" alt=""></a></li>
+                <li><a href="https://www.coinbase.com/"><img src="img/Coinbase.png" alt=""></a></li>
+                <li><a href="https://www.okx.com/zh-hant"><img src="img/OKX.png" alt=""></a></li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>
