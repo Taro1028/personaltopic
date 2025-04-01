@@ -229,14 +229,14 @@ body {
     transform: scale(1.2);
 }
 
-.currency{
+.currency {
     color: #808080;
     display: flex;
     text-align: center;
     margin-top: 800px;
 }
 
-.crypto{
+.crypto {
     width: 180px;
     height: 180px;
     border-radius: 50%;
@@ -244,19 +244,19 @@ body {
     margin: 0 auto 400px;
 }
 
-.crypto img{
+.crypto img {
     width: 80px;
     height: 80px;
     margin-top: 20px;
 }
 
-.crypto h4{
+.crypto h4 {
     font-size: 24px;
     margin-top: 10px;
     margin-bottom: 60px;
 }
 
-.crypto p{
+.crypto p {
     color: #fff;
     width: 600px;
     height: 200px;
@@ -269,11 +269,11 @@ body {
     display: none;
 }
 
-.crypto:hover p{
+.crypto:hover p {
     display: block;
 }
 
-.rightp{
+.rightp {
     color: #fff;
     text-align: left;
     font-size: 28px;
@@ -286,18 +286,18 @@ body {
     display: none;
 }
 
-.crypto:hover .righp{
+.crypto:hover .righp {
     display: block;
 }
 
-.info-section{
+.info-section {
     display: flex;
     justify-content: center;
     gap: 400px;
     margin-bottom: 600px;
 }
 
-.advantage{
+.advantage {
     color: #fff;
     width: 200px;
     height: 200px;
@@ -309,7 +309,7 @@ body {
     background-color: #00D93A;
 }
 
-.advantage p{
+.advantage p {
     color: #00D93A;
     width: 200px;
     font-size: 28px;
@@ -319,11 +319,11 @@ body {
     display: none;
 }
 
-.advantage:hover p{
+.advantage:hover p {
     display: block;
 }
 
-.risk{
+.risk {
     color: #fff;
     width: 200px;
     height: 200px;
@@ -335,7 +335,7 @@ body {
     background-color: #00D93A;
 }
 
-.risk p{
+.risk p {
     color: #00D93A;
     width: 200px;
     font-size: 28px;
@@ -346,7 +346,7 @@ body {
     display: none;
 }
 
-.risk:hover p{
+.risk:hover p {
     display: block;
 }
 
@@ -425,13 +425,13 @@ img {
     font-style: normal;
 }
 
-.characteristic{
+.characteristic {
     color: #808080;
     display: flex;
     text-align: center;
 }
 
-.smallcard{
+.smallcard {
     width: 160px;
     height: 200px;
     border-radius: 20px;
@@ -439,19 +439,19 @@ img {
     margin: 0 auto 400px;
 }
 
-.smallcard i{
+.smallcard i {
     font-size: 60px;
     margin: 20px;
 }
 
-.smallcard h4{
+.smallcard h4 {
     font-size: 24px;
     line-height: 1.2;
     margin-top: 20px;
 }
 
-.smallcard:hover{
-    transform:translateY(-30px)
+.smallcard:hover {
+    transform: translateY(-30px)
 }
 
 /* ---------- Coin Details ---------- */
@@ -492,8 +492,8 @@ td {
     margin-bottom: 20px;
 }
 
-.coin img:hover{
-    transform:translateY(-30px)
+.coin img:hover {
+    transform: translateY(-30px)
 }
 
 .coin-1 {
@@ -529,6 +529,11 @@ td {
 .coin-right {
     font-size: 28px;
     align-content: center;
+    line-height: 1.6;
+
+    font-family: "Stick", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 /* ---------- Price History ---------- */
@@ -601,7 +606,7 @@ td {
 }
 
 /* ---------- Getting Started ---------- */
-.safety{
+.safety {
     width: 600px;
     color: #fff;
     color: #fff;
@@ -609,24 +614,24 @@ td {
     margin: 200px auto;
 }
 
-.safety h3{
+.safety h3 {
     font-size: 36px;
     font-weight: bolder;
     margin-bottom: 20px;
 }
 
-.safety li{
+.safety li {
     display: flex;
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 30px;
 }
 
-.safety li i{
+.safety li i {
     font-size: 24px;
 }
 
-.safety li p{
+.safety li p {
     font-size: 28px;
     letter-spacing: 5px;
 
@@ -635,12 +640,12 @@ td {
     font-style: normal;
 }
 
-.purchase{
+.purchase {
     display: block;
     margin: 400px auto;
 }
 
-.purchase h3{
+.purchase h3 {
     color: #fff;
     text-align: center;
     font-size: 36px;
@@ -648,7 +653,7 @@ td {
     margin-bottom: 40px;
 }
 
-.purchase img{
+.purchase img {
     display: block;
     width: 480px;
     height: 800px;
