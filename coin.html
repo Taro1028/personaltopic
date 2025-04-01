@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/LOGO.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Stick&display=swap" rel="stylesheet">
     <title>Crypto Rookie</title>
 </head>
+
 <body>
 
     <!------------ HEAD ------------>
@@ -24,33 +29,65 @@
     </nav>
 
     <!-------------- Coin Details -------------->
-    <table>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow"
+                target="_blank"></a></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+            async>
+                {
+                    "symbols": [
+                        {
+                            "proName": "BITSTAMP:BTCUSD",
+                            "title": "Bitcoin"
+                        },
+                        {
+                            "proName": "BITSTAMP:ETHUSD",
+                            "title": "Ethereum"
+                        },
+                        {
+                            "description": "Solana",
+                            "proName": "BINANCE:SOLUSDT"
+                        }
+                    ],
+                        "showSymbolLogo": true,
+                            "isTransparent": false,
+                                "displayMode": "adaptive",
+                                    "colorTheme": "dark",
+                                        "locale": "en"
+                }
+            </script>
+    </div>
+    <!-- TradingView Widget END -->
+
+    <!-- <table>
         <tr class="list-title">
-            <td>名稱</td>
-            <td>價格</td>
-            <td>漲跌％</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Ups and Downs％</td>
         </tr>
         <tr>
             <td>BTC</td>
-            <td>999,999</td>
-            <td>99.99%</td>
+            <td>84,307.47</td>
+            <td>+2.78%</td>
         </tr>
         <tr>
             <td>ETH</td>
-            <td>999,999</td>
-            <td>99.99%</td>
+            <td>1,877.83</td>
+            <td>+4.33%</td>
         </tr>
         <tr>
             <td>SOL</td>
-            <td>999,999</td>
-            <td>99.99%</td>
+            <td>128.33</td>
+            <td>+3.23%</td>
         </tr>
-    </table>
+    </table> -->
 
     <div class="coin">
         <div class="coin-1">
             <div class="coin-left">
-                <img src="img/BTC.png" alt="">
+                <a href="price.html"><img src="img/BTC.png" alt=""></a>
                 <h4>Bitcoin(BTC)</h4>
             </div>
             <div class="coin-right">
@@ -59,20 +96,21 @@
                     比特幣採限量發行，總量設計為2100萬顆，大約每四年會執行一次「獎勵減半」機制，限量特性使比特幣具有抗通膨的價值儲存功能。</p>
             </div>
         </div>
-    
+
         <div class="coin-2">
             <div class="coin-left">
-                <img src="img/ETH.png" alt="">
+                <a href="ETHprice.html"><img src="img/ETH.png" alt=""></a>
                 <h4>Ether(ETH)</h4>
             </div>
             <div class="coin-right">
-                <p>智慧合約先驅，是全球最大智能合約平台的原生貨幣，可用於DeFi、NFT等應用，被視為區塊鏈生態的核心資產。以太幣不像比特幣會固定總量，而是透過「燃燒機制」控制供應，這種類似股市的回購機制會減少市場上的ETH數量，降低供應增長速度，甚至可能讓ETH因流通數量減少而成為通縮資產。</p>
+                <p>智慧合約先驅，是全球最大智能合約平台的原生貨幣，可用於DeFi、NFT等應用，被視為區塊鏈生態的核心資產。以太幣不像比特幣會固定總量，而是透過「燃燒機制」控制供應，這種類似股市的回購機制會減少市場上的ETH數量，降低供應增長速度，甚至可能讓ETH因流通數量減少而成為通縮資產。
+                </p>
             </div>
         </div>
-    
+
         <div class="coin-3">
             <div class="coin-left">
-                <img src="img/SOL.png" alt="">
+                <a href="SOLprice.html"><img src="img/SOL.png" alt=""></a>
                 <h4>Solana(SOL)</h4>
             </div>
             <div class="coin-right">
@@ -100,4 +138,5 @@
         </div>
     </div>
 </body>
+
 </html>
