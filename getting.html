@@ -23,14 +23,14 @@
             <li><a href="coin.html">Coin Details</a></li>
             <li><a href="price.html">Price History</a></li>
             <li><a href="crypto.html">Crypto Converter</a></li>
-            <li><a href="getting.html">Getting Started</a></li>
+            <li><a class="option" href="getting.html">Getting Started</a></li>
         </ul>
     </nav>
 
     <!-------------- Getting Started -------------->
     <div class="safety">
         <ul>
-            <li><h3>Security</h3></li>
+            <li><h3>合規性及安全性：</h3></li>
             <li>
                 <i class="fa-solid fa-cubes"></i>
                 <p>熟悉當地的加密貨幣法規。</p>
@@ -54,12 +54,12 @@
     </div>
 
     <div class="purchase">
-        <h3>Purchase process</h3>
+        <h3>購買流程圖</h3>
         <img src="img/Buy.png" alt="">
     </div>
 
     <!------------ FOOTER ------------>
-    <div class="footer">
+    <footer>
         <div class="left">
             <ul>
                 <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
@@ -70,13 +70,44 @@
         </div>
         <div class="right">
             <ul>
-                <li><a href="https://www.binance.com/zh-TC"><img src="img/Binance.png" alt=""></a></li>
-                <li><a href="https://www.coinbase.com/"><img src="img/Coinbase.png" alt=""></a></li>
-                <li><a href="https://www.okx.com/zh-hant"><img src="img/OKX.png" alt=""></a></li>
+                <li><a href="https://www.binance.com/zh-TC" target="_blank"><img src="img/Binance.png" alt=""></a></li>
+                <li><a href="https://www.coinbase.com/" target="_blank"><img src="img/Coinbase.png" alt=""></a></li>
+                <li><a href="https://www.okx.com/zh-hant" target="_blank"><img src="img/OKX.png" alt=""></a></li>
             </ul>
         </div>
-    </div>
+    </footer>
 
 </body>
 
 </html>
+
+window.addEventListener('load', () => {
+    const amountTWD = document.getElementById("amountTWD");
+    const amountUSD = document.getElementById("amountUSD");
+
+    // 固定匯率 1 TWD = 0.031 USD
+    const exchangeRate = 0.031;
+
+    // 台幣換美金
+    function convertCurrency() {
+        const amount = amountTWD.value;
+
+        if (amount === "" || isNaN(amount) || amount <= 0) {
+            amountUSD.value = "";
+            return;
+        }
+
+        // 計算結果四捨五入到小數點後兩位
+        amountUSD.value = (amount * exchangeRate).toFixed(2);
+        // 監聽輸入變更
+        let now = new Date()
+
+        let hour = ('0' + now.getHours()).slice(-2)
+        let minute = ('0' + now.getMinutes()).slice(-2)
+
+        document.getElementsByClassName('timestamp')[0].innerHTML = `
+                ${now.toLocaleDateString()} ${hour}:${minute}
+                `
+    }
+    amountTWD.addEventListener("input", convertCurrency);
+})

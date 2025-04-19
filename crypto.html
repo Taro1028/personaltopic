@@ -19,7 +19,7 @@
             <li><a href="block.html">Blockchain</a></li>
             <li><a href="coin.html">Coin Details</a></li>
             <li><a href="price.html">Price History</a></li>
-            <li><a href="crypto.html">Crypto Converter</a></li>
+            <li><a class="option" href="crypto.html">Crypto Converter</a></li>
             <li><a href="getting.html">Getting Started</a></li>
         </ul>
     </nav>
@@ -28,12 +28,15 @@
     <div class="outer">
         <div class="outer-left">
             <div class="container">
-                <h4>Exchange rate conversion</h4>
+                <h4>匯率轉換</h4>
                 <div class="converter">
                     <div class="input-group">
                         <input type="number" id="amountTWD" placeholder="輸入金額">
                         <span>TWD</span>
                     </div>
+
+                    <p id="errorMsg" class="error-msg" style="display: none;"></p>
+
                     <div class="input-group">
                         <input type="number" id="amountUSD" placeholder="轉換結果" readonly>
                         <span>USD</span>
@@ -45,7 +48,7 @@
 
         <div class="outer-right">
             <div class="container">
-                <h4>Currency rate conversion</h4>
+                <h4>幣率轉換</h4>
                 <div class="converter">
                     <div class="input-group">
                         <input type="number" id="amountUSDT" placeholder="輸入金額">
@@ -72,35 +75,64 @@
     <!-------------- JS -------------->
     <script>
         window.addEventListener('load', () => {
-            const amountTWD = document.getElementById("amountTWD");
-            const amountUSD = document.getElementById("amountUSD");
+  const amountTWD = document.getElementById("amountTWD");
+  const amountUSD = document.getElementById("amountUSD");
+  const errorMsg = document.getElementById("errorMsg");
 
-            // 固定匯率 1 TWD = 0.031 USD
-            const exchangeRate = 0.031;
+  const exchangeRate = 0.031;
+  let errorTimer = null;
 
-            // 台幣換美金
-            function convertCurrency() {
-                const amount = amountTWD.value;
+  function convertCurrency() {
+    const value = amountTWD.value.trim();
+    const number = Number(value);
 
-                if (amount === "" || isNaN(amount) || amount <= 0) {
-                    amountUSD.value = "";
-                    return;
-                }
+    let error = "";
+    if (value === "") {
+      error = "請輸入金額";
+    } else if (isNaN(number)) {
+      error = "請輸入數字";
+    } else if (number <= 0) {
+      error = "不能輸入負數或 0";
+    } else if (!Number.isInteger(number)) {
+      error = "請輸入整數金額";
+    }
 
-                // 計算結果四捨五入到小數點後兩位
-                amountUSD.value = (amount * exchangeRate).toFixed(2);
-                // 監聽輸入變更
-                let now = new Date()
+    if (error) {
+      amountUSD.value = "";
+      errorMsg.textContent = error;
+      errorMsg.style.display = "block";
+      errorMsg.classList.remove("fade-out", "bubble-in");
+      void errorMsg.offsetWidth;
+      errorMsg.classList.add("bubble-in");
 
-                let hour = ('0' + now.getHours()).slice(-2)
-                let minute = ('0' + now.getMinutes()).slice(-2)
+      amountTWD.classList.add("input-error");
 
-                document.getElementsByClassName('timestamp')[0].innerHTML = `
-                        ${now.toLocaleDateString()} ${hour}:${minute}
-                        `
-            }
-            amountTWD.addEventListener("input", convertCurrency);
-        })
+      clearTimeout(errorTimer);
+      errorTimer = setTimeout(() => {
+        errorMsg.classList.add("fade-out");
+        amountTWD.classList.remove("input-error");
+        setTimeout(() => {
+          errorMsg.style.display = "none";
+          errorMsg.classList.remove("fade-out");
+        }, 500);
+      }, 3000);
+      return;
+    }
+
+    errorMsg.style.display = "none";
+    amountTWD.classList.remove("input-error");
+
+    amountUSD.value = (number * exchangeRate).toFixed(2);
+
+    const now = new Date();
+    const hour = ('0' + now.getHours()).slice(-2);
+    const minute = ('0' + now.getMinutes()).slice(-2);
+    document.querySelector('.timestamp').textContent =
+      `${now.toLocaleDateString()} ${hour}:${minute}`;
+  }
+
+  amountTWD.addEventListener("input", convertCurrency);
+});
 
 
     </script>
@@ -133,7 +165,7 @@
                     return;
                 }
 
-                // 依照選擇的幣種轉換，並設定適當的小數位數
+                // 依照選擇的幣種轉換設定適當的小數位數
                 let result;
                 if (selectedCurrency === "BTC") {
                     result = (amount * exchangeRates.BTC).toFixed(8);
@@ -162,7 +194,7 @@
     </script>
 
     <!------------ FOOTER ------------>
-    <div class="footer">
+    <footer>
         <div class="left">
             <ul>
                 <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
@@ -173,12 +205,12 @@
         </div>
         <div class="right">
             <ul>
-                <li><a href="https://www.binance.com/zh-TC"><img src="img/Binance.png" alt=""></a></li>
-                <li><a href="https://www.coinbase.com/"><img src="img/Coinbase.png" alt=""></a></li>
-                <li><a href="https://www.okx.com/zh-hant"><img src="img/OKX.png" alt=""></a></li>
+                <li><a href="https://www.binance.com/zh-TC" target="_blank"><img src="img/Binance.png" alt=""></a></li>
+                <li><a href="https://www.coinbase.com/" target="_blank"><img src="img/Coinbase.png" alt=""></a></li>
+                <li><a href="https://www.okx.com/zh-hant" target="_blank"><img src="img/OKX.png" alt=""></a></li>
             </ul>
         </div>
-    </div>
+    </footer>
 
 </body>
 

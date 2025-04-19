@@ -6,31 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rwd.css">
     <link rel="icon" href="img/LOGO.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Stick&display=swap" rel="stylesheet">
     <title>Crypto Rookie</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+    <script>
+        $(function () {
+            $('.menubar').click(function () {
+                $(this).toggleClass('active')
+
+
+            })
+        })
+    </script>
 </head>
 
 <body>
 
-    <!------------ HEAD ------------>
+    <!------------ Header  ------------>
     <nav id="main-sel">
         <a href="index.html"><img src="img/LOGO.png" alt=""></a>
         <h3>Crypto Rookie</h3>
-        <ul>
-            <li><a href="block.html">Blockchain</a></li>
-            <li><a href="coin.html">Coin Details</a></li>
-            <li><a href="price.html">Price History</a></li>
-            <li><a href="crypto.html">Crypto Converter</a></li>
-            <li><a href="getting.html">Getting Started</a></li>
-        </ul>
+
+        <div class="menubar">
+            <div class="bar bar1 transition"></div>
+            <div class="bar bar2 transition"></div>
+            <div class="bar bar3 transition"></div>
+
+            <ul class="transition navigation">
+                <li><a class="transition" href="block.html">Blockchain</a></li>
+                <li><a class="transition" href="coin.html">Coin Details</a></li>
+                <li><a class="transition" href="price.html">Price History</a></li>
+                <li><a class="transition" href="crypto.html">Crypto Converter</a></li>
+                <li><a class="transition navigation__link" href="getting.html">Getting Started</a></li>
+            </ul>
+        </div>
+
     </nav>
 
     <!------------ HOME ------------>
 
     <div class="home">
+        <video autoplay muted loop playsinline id="bgVideo">
+            <source src="./img/video:bg.mp4" type="video/mp4">
+        </video>
+
         <h1>Learn Crypto<br>Now</br></h1>
         <img src="img/Homebtc.png" alt="" class="pic1">
         <img src="img/Homeeth.png" alt="" class="pic2">
@@ -40,7 +64,7 @@
 
     <div class="main">
         <img src="img/img_1.png" alt="">
-        <h2>What is <br>cryptocurrency?</br></h2>
+        <h2>什麼是 <br>加密貨幣?</br></h2>
 
     </div>
 
@@ -49,29 +73,38 @@
         </p>
     </div>
 
-    <div class="card-1">
-        <div class="card-header">中心化</div>
-        <div class="content-1">
-            <div class="info-1">
-                <span>交易紀錄</span>
-                <span>用戶個資</span>
+    <div class="card">
+        <div class="card-1">
+            <div class="card-header">中心化</div>
+            <div class="content-1">
+                <div class="info-1">
+                    <span>交易紀錄</span>
+                    <span>用戶個資</span>
+                </div>
+                <div class="process">
+                    銀行 <span class="arrow">→</span> 政府審查 <span class="arrow">←</span> 銀行
+                </div>
             </div>
-            <div class="process">
-                銀行 <span class="arrow">→</span> 政府審查 <span class="arrow">←</span> 銀行
+        </div>
+
+        <div class="card-2">
+            <div class="card-header">去中心化</div>
+            <div class="content-2">
+                <div class="info-2">
+                    <span>可成為礦工<br>維護區塊鏈</span>
+                    <span>可供查詢</span>
+                </div>
+                <div class="process">
+                    所有人 <span class="arrow">←</span> 比特幣 <span class="arrow">→</span> 所有人
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="card-2">
-        <div class="card-header">去中心化</div>
-        <div class="content-2">
-            <div class="info-2">
-                <span>可成為礦工<br>維護區塊鏈</span>
-                <span>可供查詢</span>
-            </div>
-            <div class="process">
-                所有人 <span class="arrow">←</span> 比特幣 <span class="arrow">→</span> 所有人
-            </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-text"></p>
         </div>
     </div>
 
@@ -111,43 +144,64 @@
 
     <div class="info-section">
         <div class="advantage">
-            <h3>Advantage</h3>
-            <p>1.潛在收益高<br>
-               2.資金門檻低<br>
-               3.無時空限制
-            </p>
+            <h3>優勢</h3>
+            <ul>
+                <li>潛在收益高</li>
+                <li>資金門檻低</li>
+                <li>無時空限制</li>
+            </ul>
         </div>
         <div class="risk">
-            <h3>Risk</h3>
-            <p>1.幣價高波動性<br>
-                2.各國監管態度<br>
-                3.保管風險<br>
-                4.被駭客攻擊<br>
-                5.技術風險
-             </p>
+            <h3>風險</h3>
+            <ul>
+                <li>幣價高波動性</li>
+                <li>各國監管態度</li>
+                <li>保管風險</li>
+                <li>被駭客攻擊</li>
+                <li>技術風險</li>
+            </ul>
         </div>
     </div>
 
-
-
     <!------------ FOOTER ------------>
-    <div class="footer">
+    <footer>
         <div class="left">
             <ul>
                 <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
                 <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa-brands fa-discord"></i></a></li>
             </ul>
-            <h3>Crypto Rookie</h3>
         </div>
+        <h3>Crypto Rookie</h3>
         <div class="right">
             <ul>
-                <li><a href="https://www.binance.com/zh-TC"><img src="img/Binance.png" alt=""></a></li>
-                <li><a href="https://www.coinbase.com/"><img src="img/Coinbase.png" alt=""></a></li>
-                <li><a href="https://www.okx.com/zh-hant"><img src="img/OKX.png" alt=""></a></li>
+                <li><a href="https://www.binance.com/zh-TC" target="_blank"><img src="img/Binance.png" alt=""></a></li>
+                <li><a href="https://www.coinbase.com/" target="_blank"><img src="img/Coinbase.png" alt=""></a></li>
+                <li><a href="https://www.okx.com/zh-hant" target="_blank"><img src="img/OKX.png" alt=""></a></li>
             </ul>
         </div>
-    </div>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            
+            $(".crypto").on("click", function () {
+                let text = $(this).closest(".crypto").find("p").text();
+                $("#modal-text").text(text);
+                $("#modal").fadeIn();
+            });
+
+            $(".close").on("click", function () {
+                $("#modal").fadeOut();
+            });
+
+            $("#modal").on("click", function (e) {
+                if (e.target === this) {
+                    $(this).fadeOut();
+                }
+            });
+        });
+    </script>
 
 </body>
 

@@ -1,17 +1,24 @@
 @import url(reast.css);
 
 body {
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
-    font-family: Arial;
     background-color: #000;
+
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
 }
 
-/* ---------- HEAD ---------- */
+/* ---------- Header  ---------- */
 #main-sel {
     display: flex;
     height: 100px;
     background-color: #000;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 #main-sel a img {
@@ -37,13 +44,17 @@ body {
     float: left;
 }
 
+#main-sel li a.option {
+    color: #fff;
+}
+
 #main-sel li a {
     display: block;
     text-decoration: none;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 100px;
-    margin-right: 10px;
+    margin-right: 20px;
     color: #00D93A;
 }
 
@@ -55,32 +66,62 @@ body {
     transform: scale(1.1);
 }
 
+.menubar {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.transition {
+    transition: 0.4s;
+}
+
+.bar {
+    width: 24px;
+    height: 3px;
+    background: #00D93A;
+    margin: 6px 0;
+    border-radius: 2px;
+
+    display: none;
+}
+
 /* ---------- HOME ---------- */
 .home {
-    background-image: url(../img/Homebgi.png);
-    width: 1200px;
+    /* background-image: url(../img/Homebgi.png); */
     height: 920px;
     overflow: hidden;
     position: relative;
+    /* z-index: 0; */
+}
+
+/* 影片設定 */
+#bgVideo {
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .home h1 {
     color: #fff;
     text-align: center;
     font-weight: bolder;
-    font-size: 96px;
-    margin: 364px auto;
+    font-size: 84px;
     letter-spacing: 2px;
     line-height: 1.2;
     text-shadow: 3px 3px 5px #00D93A;
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .home img {
     position: absolute;
-}
-
-.home img:hover {
-    transform: scale(1.2);
 }
 
 .pic1 {
@@ -88,6 +129,7 @@ body {
     height: 150px;
     top: 150px;
     left: 100px;
+    animation: pic1 3s infinite;
 }
 
 .pic2 {
@@ -95,6 +137,7 @@ body {
     height: 140px;
     top: 240px;
     right: 120px;
+    animation: pic2 3s .5s infinite;
 }
 
 .pic3 {
@@ -102,6 +145,7 @@ body {
     height: 140px;
     bottom: 280px;
     left: 160px;
+    animation: pic3 3s .5s infinite;
 }
 
 .pic4 {
@@ -109,6 +153,63 @@ body {
     height: 150px;
     bottom: 200px;
     right: 60px;
+    animation: pic4 3s infinite;
+}
+
+@keyframes pic1 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pic2 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pic3 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pic4 {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .main {
@@ -118,16 +219,16 @@ body {
 }
 
 .main img {
-    width: 500px;
+    width: 50%;
     height: 300px;
-    margin-top: 360px;
+    margin-top: 300px;
 }
 
 .main h2 {
     text-align: center;
     font-size: 80px;
     width: 600px;
-    margin: 420px auto;
+    margin: 360px auto 0;
     letter-spacing: 2px;
 }
 
@@ -138,11 +239,16 @@ body {
     line-height: 1.6;
     letter-spacing: 5px;
     text-align: center;
-    margin: 120px auto 200px;
+    margin: 0 auto 200px;
+}
 
-    font-family: "Stick", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+.card {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto 200px;
 }
 
 .card-1 {
@@ -150,15 +256,12 @@ body {
     height: 200px;
     border-radius: 20px;
     overflow: hidden;
-    border: 2px solid #fff;
     text-align: center;
-    font-family: Arial;
-    float: left;
-    margin-left: 80px;
+    min-width: 200px;
 }
 
 .card-header {
-    background-color: #00D93A;
+    background-color: #545353;
     color: #fff;
     font-weight: bold;
     font-size: 36px;
@@ -166,7 +269,7 @@ body {
 }
 
 .content-1 {
-    background-color: #fff;
+    background-color: #efecec;
     padding: 48px;
 }
 
@@ -199,15 +302,13 @@ body {
     height: 200px;
     border-radius: 20px;
     overflow: hidden;
-    border: 2px solid #fff;
     text-align: center;
     font-family: Arial;
-    float: right;
-    margin-right: 80px;
+    min-width: 200px;
 }
 
 .content-2 {
-    background-color: #fff;
+    background-color: #efecec;
     padding: 38px;
 }
 
@@ -221,19 +322,49 @@ body {
     padding-right: 96px;
 }
 
-.card-1:hover {
-    transform: scale(1.2);
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
 }
-
-.card-2:hover {
-    transform: scale(1.2);
+  
+.modal-content {
+    background-color: #ddd;
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    position: relative;
+}
+  
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+  
+.close:hover {
+    color: #ff5c5c;
 }
 
 .currency {
     color: #808080;
     display: flex;
     text-align: center;
-    margin-top: 800px;
+    margin: 300px auto 300px;
 }
 
 .crypto {
@@ -241,7 +372,16 @@ body {
     height: 180px;
     border-radius: 50%;
     background-color: #fff;
-    margin: 0 auto 400px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.crypto:hover{
+    color: #00D93A;
+}
+
+.crypto p{
+    display: none;
 }
 
 .crypto img {
@@ -256,109 +396,79 @@ body {
     margin-bottom: 60px;
 }
 
-.crypto p {
-    color: #fff;
-    width: 600px;
-    height: 200px;
-    text-align: left;
-    font-size: 28px;
-    line-height: 1.5;
-    border-radius: 20px;
-    padding: 10px;
-    background-color: #808080;
-    display: none;
-}
-
-.crypto:hover p {
-    display: block;
-}
-
-.rightp {
-    color: #fff;
-    text-align: left;
-    font-size: 28px;
-    line-height: 1.5;
-    border-radius: 20px;
-    padding: 10px;
-    margin-top: -440px;
-    margin-left: -480px;
-    background-color: #808080;
-    display: none;
-}
-
-.crypto:hover .righp {
-    display: block;
-}
-
 .info-section {
     display: flex;
-    justify-content: center;
-    gap: 400px;
-    margin-bottom: 600px;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto 200px;
+}
+
+.advantage,.risk {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px 25px;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 12px rgba(0, 255, 128, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advantage:hover,.risk:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 16px rgba(0, 255, 128, 0.3);
 }
 
 .advantage {
-    color: #fff;
-    width: 200px;
-    height: 200px;
-    font-size: 36px;
-    font-weight: bolder;
-    line-height: 200px;
-    text-align: center;
-    border-radius: 50%;
-    background-color: #00D93A;
-}
-
-.advantage p {
-    color: #00D93A;
-    width: 200px;
-    font-size: 28px;
-    line-height: 2;
-    border-radius: 20px;
-    margin-top: 20px;
-    display: none;
-}
-
-.advantage:hover p {
-    display: block;
+    border-left: 4px solid #00D93A;
 }
 
 .risk {
-    color: #fff;
-    width: 200px;
-    height: 200px;
-    font-size: 36px;
-    font-weight: bolder;
-    line-height: 200px;
-    text-align: center;
-    border-radius: 50%;
-    background-color: #00D93A;
+    border-left: 4px solid #ff4d4d;
 }
 
-.risk p {
-    color: #00D93A;
-    width: 200px;
+.advantage h3,.risk h3 {
     font-size: 28px;
-    text-align: left;
-    line-height: 2;
-    border-radius: 20px;
-    margin-top: 20px;
-    display: none;
+    text-align: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #545353;
+    padding-bottom: 5px;
 }
 
-.risk:hover p {
-    display: block;
+.advantage h3 {
+    color: #00D93A;
+}
+
+.risk h3 {
+    color: #ff4d4d;
+}
+
+.info-section ul {
+    list-style-position: inside;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #ddd;
+    text-align: center;
+}
+
+.advantage ul li::marker {
+    color: #00D93A;
+}
+
+.risk ul li::marker {
+    color: #ff4d4d;
 }
 
 /* ---------- Blockchain ---------- */
 .top {
     background-image: url(../img/bgi.png);
-    width: 1200px;
     height: 920px;
     color: #fff;
     font-size: 80px;
     display: flex;
     position: relative;
+    z-index: 0;
 }
 
 .top-left {
@@ -382,11 +492,7 @@ body {
     line-height: 2;
     letter-spacing: 5px;
     text-align: center;
-    margin: 400px auto;
-
-    font-family: "Stick", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    margin: 200px auto;
 }
 
 img {
@@ -399,7 +505,7 @@ img {
     width: 1000px;
     list-style: none;
     padding: 0;
-    margin: 400px auto;
+    margin: 200px auto;
 }
 
 .chain li {
@@ -419,10 +525,6 @@ img {
     font-size: 28px;
     line-height: 1.6;
     letter-spacing: 5px;
-
-    font-family: "Stick", sans-serif;
-    font-weight: 400;
-    font-style: normal;
 }
 
 .characteristic {
@@ -436,7 +538,7 @@ img {
     height: 200px;
     border-radius: 20px;
     background-color: #fff;
-    margin: 0 auto 400px;
+    margin: 0 auto 200px;
 }
 
 .smallcard i {
@@ -455,32 +557,6 @@ img {
 }
 
 /* ---------- Coin Details ---------- */
-/* table {
-    width: 800px;
-    height: 260px;
-    margin: 200px auto;
-    font-size: 24px;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.list-title {
-    background-color: #00D93A;
-    font-weight: bolder;
-}
-
-tr {
-    background-color: #fff;
-}
-
-td {
-    text-align: center;
-    border-bottom: 1px solid #ccc;
-    padding: 20px;
-} */
-
 .coin {
     color: #fff;
     margin: 320px 170px;
@@ -530,10 +606,6 @@ td {
     font-size: 28px;
     align-content: center;
     line-height: 1.6;
-
-    font-family: "Stick", sans-serif;
-    font-weight: 400;
-    font-style: normal;
 }
 
 /* ---------- Price History ---------- */
@@ -546,7 +618,7 @@ td {
     display: flex;
     gap: 100px;
     justify-content: center;
-    margin-top: 280px;
+    margin-top: 200px;
 }
 
 .outer-left {
@@ -605,6 +677,60 @@ td {
     background-color: unset;
 }
 
+/* 輸入錯誤時的紅色邊框 + 抖動 */
+.input-error {
+    border-color: #ff4d4d !important;
+    animation: shake 0.3s ease;
+  }
+  
+  /* 錯誤訊息樣式 */
+  .error-msg {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin: 6px 0 10px 0;
+    animation: bubbleIn 0.4s ease-out;
+  }
+  
+  /* 冒泡動畫 */
+  @keyframes bubbleIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.9);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-5px) scale(1.05);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* 淡出動畫 */
+  .fade-out {
+    animation: fadeOut 0.5s ease forwards;
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* 抖動動畫 */
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+  }
+
 /* ---------- Getting Started ---------- */
 .safety {
     width: 600px;
@@ -634,10 +760,6 @@ td {
 .safety li p {
     font-size: 28px;
     letter-spacing: 5px;
-
-    font-family: "Stick", sans-serif;
-    font-weight: 400;
-    font-style: normal;
 }
 
 .purchase {
@@ -655,21 +777,21 @@ td {
 
 .purchase img {
     display: block;
-    width: 480px;
-    height: 800px;
+    width: 1000px;
+    height: 400px;
     margin: 0 auto;
 }
 
 
 /* ---------- FOOTER ---------- */
-.footer {
+footer {
     background-color: #000;
     height: 100px;
     display: flex;
     clear: both;
 }
 
-.footer img {
+footer img {
     width: 60px;
     height: 60px;
 }
@@ -692,12 +814,13 @@ td {
     color: #fff;
 }
 
-.left h3 {
+footer h3 {
     color: #00D93A;
+    width: 100%;
     font-weight: bolder;
     font-size: 36px;
     line-height: 100px;
-    margin: 0 232px;
+    text-align: center;
 }
 
 .right {
@@ -712,8 +835,4 @@ td {
 
 .right li {
     margin-right: 20px;
-}
-
-.left i {
-    font-size: 60px;
 }
