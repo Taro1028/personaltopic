@@ -11,6 +11,10 @@ body {
     font-style: normal;
 }
 
+body.noscroll {
+    overflow: hidden;
+}
+
 /* ---------- Header  ---------- */
 #main-sel {
     display: flex;
@@ -36,66 +40,75 @@ body {
     color: #00D93A;
 }
 
-#main-sel ul {
-    margin-left: auto;
-}
-
-#main-sel li {
-    float: left;
-}
-
-#main-sel li a.option {
-    color: #fff;
-}
-
-#main-sel li a {
-    display: block;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 100px;
-    margin-right: 20px;
-    color: #00D93A;
-}
-
-#main-sel li a:hover {
-    color: #fff;
-}
-
 #main-sel a img:hover {
     transform: scale(1.1);
 }
 
-.menubar {
-    position: absolute;
-    right: 0;
+.overlay {
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 90;
 }
 
-.transition {
-    transition: 0.4s;
+.menubar {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 110;
+}
+
+.menubar ul {
+    margin-left: auto;
+}
+
+.menubar ul li {
+    float: left;
+}
+
+.menubar ul li a.option {
+    color: #fff;
+}
+
+.menubar ul li a {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 75px;
+    margin-right: 20px;
+    color: #00D93A;
+}
+
+.menubar ul li a:hover {
+    color: #fff;
 }
 
 .bar {
     width: 24px;
     height: 3px;
-    background: #00D93A;
+    background-color: #00D93A;
     margin: 6px 0;
+    transition: 0.4s;
     border-radius: 2px;
-
+    cursor: pointer;
     display: none;
 }
 
 /* ---------- HOME ---------- */
 .home {
-    /* background-image: url(../img/Homebgi.png); */
     height: 920px;
     overflow: hidden;
     position: relative;
     /* z-index: 0; */
 }
 
-/* 影片設定 */
 #bgVideo {
     top: 0;
     left: 0;
@@ -113,7 +126,7 @@ body {
     letter-spacing: 2px;
     line-height: 1.2;
     text-shadow: 3px 3px 5px #00D93A;
-    z-index: 100;
+    z-index: 80;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -214,7 +227,6 @@ body {
 
 .main {
     display: flex;
-    color: #fff;
     height: 920px;
 }
 
@@ -228,13 +240,14 @@ body {
     text-align: center;
     font-size: 80px;
     width: 600px;
+    color: #fff;
     margin: 360px auto 0;
     letter-spacing: 2px;
 }
 
 .in p {
     color: #fff;
-    width: 1000px;
+    width: 80%;
     font-size: 28px;
     line-height: 1.6;
     letter-spacing: 5px;
@@ -285,6 +298,7 @@ body {
 
 .process {
     display: flex;
+    color: #000;
     align-items: center;
     justify-content: center;
     font-size: 28px;
@@ -303,7 +317,6 @@ body {
     border-radius: 20px;
     overflow: hidden;
     text-align: center;
-    font-family: Arial;
     min-width: 200px;
 }
 
@@ -463,6 +476,10 @@ body {
 /* ---------- Blockchain ---------- */
 .top {
     background-image: url(../img/bgi.png);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat; 
+    width: 100%;
     height: 920px;
     color: #fff;
     font-size: 80px;
@@ -487,7 +504,7 @@ body {
 
 .text p {
     color: #fff;
-    width: 1000px;
+    width: 80%;
     font-size: 28px;
     line-height: 2;
     letter-spacing: 5px;
@@ -496,13 +513,14 @@ body {
 }
 
 img {
-    width: 1200px;
-    height: 600px;
+    width: 100%;
 }
 
 .chain ul {
     color: #fff;
-    width: 1000px;
+    /* max-width: 1000px; */
+    width: 80%;
+
     list-style: none;
     padding: 0;
     margin: 200px auto;
@@ -530,6 +548,8 @@ img {
 .characteristic {
     color: #808080;
     display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
     text-align: center;
 }
 
@@ -559,7 +579,8 @@ img {
 /* ---------- Coin Details ---------- */
 .coin {
     color: #fff;
-    margin: 320px 170px;
+    margin: 320px auto;
+    padding: 40px;
 }
 
 .coin img {
@@ -572,24 +593,15 @@ img {
     transform: translateY(-30px)
 }
 
-.coin-1 {
+.coin-1,.coin-2 {
     display: flex;
-    width: 860px;
-    height: 280px;
-    margin-bottom: 360px;
-}
-
-.coin-2 {
-    display: flex;
-    width: 860px;
-    height: 280px;
+    width: 100%;
     margin-bottom: 360px;
 }
 
 .coin-3 {
     display: flex;
-    width: 860px;
-    height: 280px;
+    width: 100%;
 }
 
 .coin-left {
@@ -616,13 +628,14 @@ img {
 /* ---------- Crypto Converter ---------- */
 .outer {
     display: flex;
-    gap: 100px;
+    flex-wrap: wrap;
+    gap: 80px;
     justify-content: center;
     margin-top: 200px;
 }
 
-.outer-left {
-    height: 600px;
+.outer-left,.outer-right {
+    height: 400px;
 }
 
 .container {
@@ -632,7 +645,7 @@ img {
     border-radius: 20px;
     width: 400px;
     color: #000;
-    font-size: 32px;
+    font-size: 28px;
 }
 
 .timestamp {
@@ -663,10 +676,6 @@ img {
 .input-group span {
     font-size: 20px;
     margin-left: 10px;
-}
-
-.outer-right {
-    height: 600px;
 }
 
 #currencySelect {
@@ -735,7 +744,6 @@ img {
 .safety {
     width: 600px;
     color: #fff;
-    color: #fff;
     list-style: none;
     margin: 200px auto;
 }
@@ -764,7 +772,7 @@ img {
 
 .purchase {
     display: block;
-    margin: 400px auto;
+    margin: 320px auto;
 }
 
 .purchase h3 {
@@ -772,13 +780,13 @@ img {
     text-align: center;
     font-size: 36px;
     font-weight: bolder;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
 }
 
 .purchase img {
     display: block;
-    width: 1000px;
-    height: 400px;
+    width: 600px;
+    height: 160px;
     margin: 0 auto;
 }
 

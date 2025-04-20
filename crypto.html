@@ -6,8 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rwd.css">
     <link rel="icon" href="img/LOGO.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Stick&display=swap" rel="stylesheet">
     <title>Crypto Rookie</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+    <script>
+        $(function () {
+            $('.menubar').click(function () {
+                $(this).toggleClass('active');
+                $('.overlay').toggleClass('active');
+                $('body').toggleClass('noscroll');
+            });
+
+            $('.overlay').click(function () {
+                $('.menubar').removeClass('active');
+                $(this).removeClass('active');
+                $('body').removeClass('noscroll');
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -15,13 +36,23 @@
     <nav id="main-sel">
         <a href="index.html"><img src="img/LOGO.png" alt=""></a>
         <h3>Crypto Rookie</h3>
-        <ul>
-            <li><a href="block.html">Blockchain</a></li>
-            <li><a href="coin.html">Coin Details</a></li>
-            <li><a href="price.html">Price History</a></li>
-            <li><a class="option" href="crypto.html">Crypto Converter</a></li>
-            <li><a href="getting.html">Getting Started</a></li>
-        </ul>
+
+        <div class="overlay"></div>
+
+        <div class="menubar">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+
+            <ul>
+                <li><a href="block.html">Blockchain</a></li>
+                <li><a href="coin.html">Coin Details</a></li>
+                <li><a href="price.html">Price History</a></li>
+                <li><a class="option" href="crypto.html">Crypto Converter</a></li>
+                <li><a href="getting.html">Getting Started</a></li>
+            </ul>
+        </div>
+        </div>
     </nav>
 
     <!-------------- Crypto Converter -------------->
@@ -54,6 +85,9 @@
                         <input type="number" id="amountUSDT" placeholder="輸入金額">
                         <span>USD</span>
                     </div>
+
+                    <p id="errorMsg2" class="error-msg" style="display: none;"></p>
+                    
                     <div class="input-group">
                         <div class="changeselect">
                             <input type="number" id="amountBTC" placeholder="轉換結果" readonly>
@@ -75,64 +109,64 @@
     <!-------------- JS -------------->
     <script>
         window.addEventListener('load', () => {
-  const amountTWD = document.getElementById("amountTWD");
-  const amountUSD = document.getElementById("amountUSD");
-  const errorMsg = document.getElementById("errorMsg");
+            const amountTWD = document.getElementById("amountTWD");
+            const amountUSD = document.getElementById("amountUSD");
+            const errorMsg = document.getElementById("errorMsg");
 
-  const exchangeRate = 0.031;
-  let errorTimer = null;
+            const exchangeRate = 0.031;
+            let errorTimer = null;
 
-  function convertCurrency() {
-    const value = amountTWD.value.trim();
-    const number = Number(value);
+            function convertCurrency() {
+                const value = amountTWD.value.trim();
+                const number = Number(value);
 
-    let error = "";
-    if (value === "") {
-      error = "請輸入金額";
-    } else if (isNaN(number)) {
-      error = "請輸入數字";
-    } else if (number <= 0) {
-      error = "不能輸入負數或 0";
-    } else if (!Number.isInteger(number)) {
-      error = "請輸入整數金額";
-    }
+                let error = "";
+                if (value === "") {
+                    error = "請輸入金額";
+                } else if (isNaN(number)) {
+                    error = "請輸入數字";
+                } else if (number <= 0) {
+                    error = "不能輸入負數或 0";
+                } else if (!Number.isInteger(number)) {
+                    error = "請輸入整數金額";
+                }
 
-    if (error) {
-      amountUSD.value = "";
-      errorMsg.textContent = error;
-      errorMsg.style.display = "block";
-      errorMsg.classList.remove("fade-out", "bubble-in");
-      void errorMsg.offsetWidth;
-      errorMsg.classList.add("bubble-in");
+                if (error) {
+                    amountUSD.value = "";
+                    errorMsg.textContent = error;
+                    errorMsg.style.display = "block";
+                    errorMsg.classList.remove("fade-out", "bubble-in");
+                    void errorMsg.offsetWidth;
+                    errorMsg.classList.add("bubble-in");
 
-      amountTWD.classList.add("input-error");
+                    amountTWD.classList.add("input-error");
 
-      clearTimeout(errorTimer);
-      errorTimer = setTimeout(() => {
-        errorMsg.classList.add("fade-out");
-        amountTWD.classList.remove("input-error");
-        setTimeout(() => {
-          errorMsg.style.display = "none";
-          errorMsg.classList.remove("fade-out");
-        }, 500);
-      }, 3000);
-      return;
-    }
+                    clearTimeout(errorTimer);
+                    errorTimer = setTimeout(() => {
+                        errorMsg.classList.add("fade-out");
+                        amountTWD.classList.remove("input-error");
+                        setTimeout(() => {
+                            errorMsg.style.display = "none";
+                            errorMsg.classList.remove("fade-out");
+                        }, 500);
+                    }, 3000);
+                    return;
+                }
 
-    errorMsg.style.display = "none";
-    amountTWD.classList.remove("input-error");
+                errorMsg.style.display = "none";
+                amountTWD.classList.remove("input-error");
 
-    amountUSD.value = (number * exchangeRate).toFixed(2);
+                amountUSD.value = (number * exchangeRate).toFixed(2);
 
-    const now = new Date();
-    const hour = ('0' + now.getHours()).slice(-2);
-    const minute = ('0' + now.getMinutes()).slice(-2);
-    document.querySelector('.timestamp').textContent =
-      `${now.toLocaleDateString()} ${hour}:${minute}`;
-  }
+                const now = new Date();
+                const hour = ('0' + now.getHours()).slice(-2);
+                const minute = ('0' + now.getMinutes()).slice(-2);
+                document.querySelector('.timestamp').textContent =
+                    `${now.toLocaleDateString()} ${hour}:${minute}`;
+            }
 
-  amountTWD.addEventListener("input", convertCurrency);
-});
+            amountTWD.addEventListener("input", convertCurrency);
+        });
 
 
     </script>
@@ -142,6 +176,7 @@
             const amountUSDT = document.getElementById("amountUSDT");
             const currencySelect = document.getElementById("currencySelect");
             const amountBTC = document.getElementById("amountBTC");
+            const errorMsg = document.getElementById("errorMsg2"); // 多一個錯誤訊息元素
 
             const exchangeRates = {
                 BTC: 0.000012,   // 1 USDT = 0.000012 BTC
@@ -150,44 +185,73 @@
             };
 
             if (!currencySelect.value) {
-                amountUSDT.disabled = true
+                amountUSDT.disabled = true;
             }
+
+            let errorTimer = null;
 
             function convertCurrency() {
                 if (currencySelect.value) {
-                    amountUSDT.disabled = false
+                    amountUSDT.disabled = false;
                 }
-                const amount = parseFloat(amountUSDT.value);
-                const selectedCurrency = currencySelect.value; // 取得選擇的幣種
 
-                if (isNaN(amount) || amount <= 0) {
+                const value = amountUSDT.value.trim();
+                const number = Number(value);
+                const selectedCurrency = currencySelect.value;
+
+                let error = "";
+                if (value === "") {
+                    error = "請輸入金額";
+                } else if (isNaN(number)) {
+                    error = "請輸入數字";
+                } else if (number <= 0) {
+                    error = "不能輸入負數或 0";
+                }
+
+                if (error) {
                     amountBTC.value = "";
+                    errorMsg.textContent = error;
+                    errorMsg.style.display = "block";
+                    errorMsg.classList.remove("fade-out", "bubble-in");
+                    void errorMsg.offsetWidth;
+                    errorMsg.classList.add("bubble-in");
+
+                    amountUSDT.classList.add("input-error");
+
+                    clearTimeout(errorTimer);
+                    errorTimer = setTimeout(() => {
+                        errorMsg.classList.add("fade-out");
+                        amountUSDT.classList.remove("input-error");
+                        setTimeout(() => {
+                            errorMsg.style.display = "none";
+                            errorMsg.classList.remove("fade-out");
+                        }, 500);
+                    }, 3000);
                     return;
                 }
 
-                // 依照選擇的幣種轉換設定適當的小數位數
+                errorMsg.style.display = "none";
+                amountUSDT.classList.remove("input-error");
+
                 let result;
                 if (selectedCurrency === "BTC") {
-                    result = (amount * exchangeRates.BTC).toFixed(8);
+                    result = (number * exchangeRates.BTC).toFixed(8);
                 } else if (selectedCurrency === "ETH") {
-                    result = (amount * exchangeRates.ETH).toFixed(6);
+                    result = (number * exchangeRates.ETH).toFixed(6);
                 } else if (selectedCurrency === "SOL") {
-                    result = (amount * exchangeRates.SOL).toFixed(4);
+                    result = (number * exchangeRates.SOL).toFixed(4);
                 }
-                let now = new Date()
 
-                let hour = ('0' + now.getHours()).slice(-2)
-                let minute = ('0' + now.getMinutes()).slice(-2)
+                const now = new Date();
+                const hour = ('0' + now.getHours()).slice(-2);
+                const minute = ('0' + now.getMinutes()).slice(-2);
 
-                document.getElementsByClassName('timestamp')[1].innerHTML = `
-                        ${now.toLocaleDateString()} ${hour}:${minute}
-                        `
+                document.getElementsByClassName('timestamp')[1].textContent =
+                    `${now.toLocaleDateString()} ${hour}:${minute}`;
 
-                // 顯示轉換結果
                 amountBTC.value = result;
             }
 
-            // 監聽 USDT 金額輸入與幣種選擇變更
             amountUSDT.addEventListener("input", convertCurrency);
             currencySelect.addEventListener("change", convertCurrency);
         });
@@ -201,8 +265,8 @@
                 <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa-brands fa-discord"></i></a></li>
             </ul>
-            <h3>Crypto Rookie</h3>
         </div>
+        <h3>Crypto Rookie</h3>
         <div class="right">
             <ul>
                 <li><a href="https://www.binance.com/zh-TC" target="_blank"><img src="img/Binance.png" alt=""></a></li>

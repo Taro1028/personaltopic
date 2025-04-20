@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="textillate-master/assets/animate.css">
+    <link rel="stylesheet" href="textillate-master/assets/style.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/rwd.css">
     <link rel="icon" href="img/LOGO.png">
@@ -13,15 +15,48 @@
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Stick&display=swap" rel="stylesheet">
     <title>Crypto Rookie</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <script src="textillate-master/assets/jquery.fittext.js"></script>
+    <script src="textillate-master/assets/jquery.lettering.js"></script>
+    <script src="textillate-master/jquery.textillate.js"></script>
 
     <script>
         $(function () {
             $('.menubar').click(function () {
-                $(this).toggleClass('active')
+                $(this).toggleClass('active');
+                $('.overlay').toggleClass('active');
+                $('body').toggleClass('noscroll');
+            });
 
+            $('.overlay').click(function () {
+                $('.menubar').removeClass('active');
+                $(this).removeClass('active');
+                $('body').removeClass('noscroll');
+            });
+        });
 
+        $(function () {
+            $('.theText, .tlt').textillate({
+                loop: true,
+                in: {
+                    effect: 'fadeIn',
+                    delayScale: 1.5,
+                    delay: 50,
+                    sync: false,
+                    reverse: false,
+                    shuffle: true,
+                    callback: function () { }
+                },
+                out: {
+                    effect: 'fadeOut',
+                    delayScale: 1.5,
+                    delay: 50,
+                    sync: false,
+                    reverse: false,
+                    shuffle: false,
+                    callback: function () { }
+                },
             })
-        })
+        });
     </script>
 </head>
 
@@ -32,20 +67,22 @@
         <a href="index.html"><img src="img/LOGO.png" alt=""></a>
         <h3>Crypto Rookie</h3>
 
-        <div class="menubar">
-            <div class="bar bar1 transition"></div>
-            <div class="bar bar2 transition"></div>
-            <div class="bar bar3 transition"></div>
+        <div class="overlay"></div>
 
-            <ul class="transition navigation">
-                <li><a class="transition" href="block.html">Blockchain</a></li>
-                <li><a class="transition" href="coin.html">Coin Details</a></li>
-                <li><a class="transition" href="price.html">Price History</a></li>
-                <li><a class="transition" href="crypto.html">Crypto Converter</a></li>
-                <li><a class="transition navigation__link" href="getting.html">Getting Started</a></li>
+        <div class="menubar">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+
+            <ul>
+                <li><a href="block.html">Blockchain</a></li>
+                <li><a href="coin.html">Coin Details</a></li>
+                <li><a href="price.html">Price History</a></li>
+                <li><a href="crypto.html">Crypto Converter</a></li>
+                <li><a href="getting.html">Getting Started</a></li>
             </ul>
         </div>
-
+        </div>
     </nav>
 
     <!------------ HOME ------------>
@@ -55,7 +92,7 @@
             <source src="./img/video:bg.mp4" type="video/mp4">
         </video>
 
-        <h1>Learn Crypto<br>Now</br></h1>
+        <h1 class="theText">Learn Crypto<br>Now</br></h1>
         <img src="img/Homebtc.png" alt="" class="pic1">
         <img src="img/Homeeth.png" alt="" class="pic2">
         <img src="img/Homesol.png" alt="" class="pic3">
@@ -64,12 +101,13 @@
 
     <div class="main">
         <img src="img/img_1.png" alt="">
-        <h2>什麼是 <br>加密貨幣?</br></h2>
+        <h2 class="tlt">什麼是 <br>加密貨幣?</br></h2>
 
     </div>
 
     <div class="in">
-        <p>加密貨幣是一種基於區塊鏈技術的虛擬貨幣概念，<br>以加密技術來確保交易安全，同時控制新幣的發行。</br>不同於由政府發行的傳統貨幣，加密貨幣具有『去中心化』<br>的特色，沒有單一機構發行或管理，透過分散式網路運行，</br>任何人都無法控制或操縱，而去中心化也可以降低交易成本<br>和加快交易速度。</br>
+        <p>
+            加密貨幣是一種基於區塊鏈技術的虛擬貨幣概念，<br>以加密技術來確保交易安全，同時控制新幣的發行。</br>不同於由政府發行的傳統貨幣，加密貨幣具有『去中心化』<br>的特色，沒有單一機構發行或管理，透過分散式網路運行，</br>任何人都無法控制或操縱，而去中心化也可以降低交易成本<br>和加快交易速度。</br>
         </p>
     </div>
 
@@ -184,7 +222,7 @@
 
     <script>
         $(document).ready(function () {
-            
+
             $(".crypto").on("click", function () {
                 let text = $(this).closest(".crypto").find("p").text();
                 $("#modal-text").text(text);
@@ -201,6 +239,7 @@
                 }
             });
         });
+
     </script>
 
 </body>
