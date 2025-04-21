@@ -6,11 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rwd.css">
     <link rel="icon" href="img/LOGO.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Stick&display=swap" rel="stylesheet">
     <title>Crypto Rookie</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
+    <script>
+        $(function () {
+            $('.menubar').click(function () {
+                $(this).toggleClass('active');
+                $('.overlay').toggleClass('active');
+                $('body').toggleClass('noscroll');
+            });
+
+            $('.overlay').click(function () {
+                $('.menubar').removeClass('active');
+                $(this).removeClass('active');
+                $('body').removeClass('noscroll');
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -19,13 +37,23 @@
     <nav id="main-sel">
         <a href="index.html"><img src="img/LOGO.png" alt=""></a>
         <h3>Crypto Rookie</h3>
-        <ul>
-            <li><a href="block.html">Blockchain</a></li>
-            <li><a href="coin.html">Coin Details</a></li>
-            <li><a href="price.html">Price History</a></li>
-            <li><a href="crypto.html">Crypto Converter</a></li>
-            <li><a href="getting.html">Getting Started</a></li>
-        </ul>
+
+        <div class="overlay"></div>
+
+        <div class="menubar">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+            <div class="bar bar3"></div>
+
+            <ul>
+                <li><a href="block.html">Blockchain</a></li>
+                <li><a href="coin.html">Coin Details</a></li>
+                <li><a href="price.html">Price History</a></li>
+                <li><a href="crypto.html">Crypto Converter</a></li>
+                <li><a href="getting.html">Getting Started</a></li>
+            </ul>
+        </div>
+        </div>
     </nav>
 
     <!-------------- Price History -------------->
@@ -38,8 +66,8 @@
         <script type="text/javascript"
             src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
                 {
-                    "width": "1000",
-                        "height": "600",
+                    "width": "100%",
+                        "height": "480",
                             "symbol": "BINANCE:SOLUSDT",
                                 "interval": "D",
                                     "timezone": "Etc/UTC",
@@ -55,23 +83,23 @@
 
 
     <!------------ FOOTER ------------>
-    <div class="footer">
+    <footer>
         <div class="left">
             <ul>
                 <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
                 <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa-brands fa-discord"></i></a></li>
             </ul>
-            <h3>Crypto Rookie</h3>
         </div>
+        <h3>Crypto Rookie</h3>
         <div class="right">
             <ul>
-                <li><a href="https://www.binance.com/zh-TC"><img src="img/Binance.png" alt=""></a></li>
-                <li><a href="https://www.coinbase.com/"><img src="img/Coinbase.png" alt=""></a></li>
-                <li><a href="https://www.okx.com/zh-hant"><img src="img/OKX.png" alt=""></a></li>
+                <li><a href="https://www.binance.com/zh-TC" target="_blank"><img src="img/Binance.png" alt=""></a></li>
+                <li><a href="https://www.coinbase.com/" target="_blank"><img src="img/Coinbase.png" alt=""></a></li>
+                <li><a href="https://www.okx.com/zh-hant" target="_blank"><img src="img/OKX.png" alt=""></a></li>
             </ul>
         </div>
-    </div>
+    </footer>
 
 </body>
 
